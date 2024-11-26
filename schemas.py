@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field
+from datetime import date, datetime
 
 class SendOTPRequest(BaseModel):
     phone_number: str = Field(..., description="Phone number with country code e.g. +11234567890")
@@ -148,4 +149,32 @@ class ChangePasswordPayload(BaseModel):
   currentPassword: str
   newPassword: str
 
-
+class UserRegisterCreate(BaseModel):
+  First_Name: str
+  Last_Name: str
+  Gender: str = None
+  Date_of_birth: date 
+  Mobile_No: str
+  Email_Address: str 
+  Password: str
+  User_Type: str = None
+  IMEI: str = None
+  RegistetedBy: str = None
+  Source: str = None
+  DeviceType: str = None
+  ActiveStatus: str = None
+  ModifiedDate: datetime = None
+  TransactionPin: str = None
+  UpdateEmail: str = None
+  UpdateMobileNo: str = None
+  UpdatePassword: str = None
+  Access_Token: str = None
+  Acc_Token_Expiry_Date: str = None 
+  Last_Login_Time: str = None
+  Device_Info: str = None
+  Email_Update: str = None
+  Mob_Update: str = None
+  Password_Update: str = None
+  Alt_EmailId: str = None
+  Device_Token: str = None
+  

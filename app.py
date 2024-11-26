@@ -5,6 +5,7 @@ from Endpoints.log_handling import log_router
 from Endpoints.ppsl_pg import ppslpg_router
 from Endpoints.qr_endpoints import qr_router
 from Endpoints.cashfree_pg import cfpg_router
+from Endpoints.user_register import user_reg_route
 
 
 app = FastAPI(
@@ -27,6 +28,7 @@ app.include_router(log_router, prefix="/logging", tags=["Logging"])
 app.include_router(ppslpg_router,prefix="/psplpg",tags=["PSPL Payment Gateway"])
 app.include_router(cfpg_router,prefix="/cfpg",tags=["Cashfree Payment Gateway"])
 app.include_router(qr_router,prefix="/qr",tags=[" APIs"])
+app.include_router(user_reg_route, prefix="/user", tags=["User Register"])
 
 
 
