@@ -35,7 +35,7 @@ async def user_master_info(usermaster: UserRegisterCreate, db: Session = Depends
 
     except SQLAlchemyError as e:
         db.rollback()
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Database error occured")
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Something went wrong unable to save")
 
     except DisconnectionError as e:
         db.rollback()
