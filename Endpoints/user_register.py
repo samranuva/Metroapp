@@ -12,7 +12,7 @@ user_reg_route = APIRouter()
 async def user_master_info(usermaster: UserRegisterCreate, db: Session = Depends(get_session)):
     print(usermaster)
     try:
-        existing_user = await db.exec(
+        existing_user = db.exec(
                 select(UserRegisterMaster).filter(
                     (UserRegisterMaster.Mobile_No == usermaster.Mobile_No) |
                     (UserRegisterMaster.Email_Address == usermaster.Email_Address)
