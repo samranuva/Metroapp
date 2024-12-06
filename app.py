@@ -1,11 +1,13 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 # from Endpoints.auth import send_otp, verify_otp, SendOTPRequest, VerifyOTPRequest
 from Endpoints.log_handling import log_router
 from Endpoints.ppsl_pg import ppslpg_router
 from Endpoints.qr_endpoints import qr_router
 from Endpoints.cashfree_pg import cfpg_router
 from Endpoints.user_register import user_reg_route
+from Endpoints.user_feedback import feedback_router
 
 
 app = FastAPI(
@@ -23,12 +25,17 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
+IMAGE_FOLDER = "D:/shivat/Metroapp/app/images/"
+app.mount("/images", StaticFiles(directory=IMAGE_FOLDER), name="images")
+
+
 # Include router
 app.include_router(log_router, prefix="/logging", tags=["Logging"])
 app.include_router(ppslpg_router,prefix="/psplpg",tags=["PSPL Payment Gateway"])
 app.include_router(cfpg_router,prefix="/cfpg",tags=["Cashfree Payment Gateway"])
 app.include_router(qr_router,prefix="/qr",tags=[" APIs"])
 app.include_router(user_reg_route, prefix="/user", tags=["User Register"])
+app.include_router(feedback_router, tags=["Feedback"])
 
 
 

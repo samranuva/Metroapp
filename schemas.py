@@ -178,3 +178,18 @@ class UserRegisterCreate(BaseModel):
   Alt_EmailId: str = None
   Device_Token: str = None
   
+class UserFeedbackCreate(BaseModel):
+   UID: int
+   Subject:str
+   Description:str
+   Image:dict
+
+class UserFeedbackResponse(BaseModel):
+   UID: int
+   Subject:str
+   Description:str
+   Image:str
+   Created_at: datetime
+
+class UserFeedbackItemResponse(UserFeedbackResponse):
+   pass
