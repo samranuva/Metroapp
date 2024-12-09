@@ -1,21 +1,21 @@
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
-from app.models import OTPValidation
+from MAdminDashboard.models import OTPValidation
 from datetime import datetime
 import random
 from pathlib import Path
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
-from app.database import get_db, Base, engine
-from app.schemas import OTPRequest
-from app.Endpoints.usermanagement import router_userpermissions
-from app.Endpoints.bannermanagement import router_banner
-from app.Endpoints.reports import router_report
-from app.Endpoints.notifications import router_notification
-from app.Endpoints.cmcmanagement import router_content
-from app.Endpoints.department import router_department
-from app.Endpoints.auth_user import router_login
+from MAdminDashboard.database import get_db, Base, engine
+from MAdminDashboard.schemas import OTPRequest
+from MAdminDashboard.Endpoints.usermanagement import router_userpermissions
+from MAdminDashboard.Endpoints.bannermanagement import router_banner
+from MAdminDashboard.Endpoints.reports import router_report
+from MAdminDashboard.Endpoints.notifications import router_notification
+from MAdminDashboard.Endpoints.cmcmanagement import router_content
+from MAdminDashboard.Endpoints.department import router_department
+from MAdminDashboard.Endpoints.auth_user import router_login
 
 app = FastAPI(title="Metro users management", description="API for users management")
 

@@ -2,9 +2,9 @@ from datetime import datetime
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from app.database import get_db
-from app.models import Department
-from app.schemas import DepartmentCreate, DepartmentResponse, DepartmentUpdate, DepartmentUserId
+from MAdminDashboard.database import get_db
+from MAdminDashboard.models import Department
+from MAdminDashboard.schemas import DepartmentCreate, DepartmentResponse, DepartmentUpdate, DepartmentUserId
 
 
 

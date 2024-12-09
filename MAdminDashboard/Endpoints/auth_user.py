@@ -1,16 +1,15 @@
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
-from app.Endpoints.token_handler import create_access_token, create_reset_token, verify_password, verify_reset_token
+from MAdminDashboard.Endpoints.token_handler import create_access_token, create_reset_token, verify_password, verify_reset_token
 from fastapi.security import OAuth2PasswordRequestForm
-from app.database import get_db
-from app.models import UserManagement
-from app.schemas import PasswordReset, PasswordResetRequest
-from app.Endpoints.token_handler import pwd_context
+from MAdminDashboard.database import get_db
+from MAdminDashboard.models import UserManagement
+from MAdminDashboard.schemas import PasswordReset, PasswordResetRequest
+from MAdminDashboard.Endpoints.token_handler import pwd_context
 
 
 router_login = APIRouter()
-
 
 
 @router_login.post("/login")

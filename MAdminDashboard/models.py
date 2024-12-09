@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, DateTime, Boolean, ForeignKey, Date, JSON, Text
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
-from app.database import Base
+from MAdminDashboard.database import Base
 from datetime import datetime
 import random
 

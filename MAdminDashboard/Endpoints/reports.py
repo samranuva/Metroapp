@@ -1,8 +1,8 @@
 from datetime import datetime
 from fastapi import APIRouter, Depends, HTTPException, Request, status
-from app.database import get_db
-from app.models import Report
-from app.Endpoints.token_handler import get_current_user
+from MAdminDashboard.database import get_db
+from MAdminDashboard.models import Report
+from MAdminDashboard.Endpoints.token_handler import get_current_user
 
 
 

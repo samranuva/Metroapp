@@ -3,10 +3,10 @@ from datetime import datetime
 import os
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from app.database import get_db
-from app.models import ContentManagement
-from app.Endpoints.token_handler import get_current_user
-from app.schemas import ContentManagementCreate, ContentManagementResponse, ContentManagementResponseUpdated, ContentManagementUpdate
+from MAdminDashboard.database import get_db
+from MAdminDashboard.models import ContentManagement
+from MAdminDashboard.Endpoints.token_handler import get_current_user
+from MAdminDashboard.schemas import ContentManagementCreate, ContentManagementResponse, ContentManagementResponseUpdated, ContentManagementUpdate
 
 
 

@@ -1,11 +1,11 @@
 from datetime import datetime
 from fastapi import Body, Depends, APIRouter, HTTPException, Request, status
 from sqlalchemy.orm import Session
-from app.database import get_db
-from app.models import Permission, UserManagement
-from app.schemas import UserManagementPermissionsResponse, UserPermissions, UserPermissionsItemResponse, UserPermissionsUserId
-from app.Endpoints.token_handler import hash_password
-from app.Endpoints.token_handler import get_current_user
+from MAdminDashboard.database import get_db
+from MAdminDashboard.models import Permission, UserManagement
+from MAdminDashboard.schemas import UserManagementPermissionsResponse, UserPermissions, UserPermissionsItemResponse, UserPermissionsUserId
+from MAdminDashboard.Endpoints.token_handler import hash_password
+from MAdminDashboard.Endpoints.token_handler import get_current_user
 
 
 router_userpermissions = APIRouter()

@@ -1,11 +1,11 @@
 from datetime import datetime
 from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
-from app.database import get_db
-from app.models import Notification
+from MAdminDashboard.database import get_db
+from MAdminDashboard.models import Notification
 from sqlalchemy.exc import NoResultFound
-from app.Endpoints.token_handler import get_current_user
-from app.schemas import NotificationCreate, NotificationItem, NotificationResponse, NotificationUserId
+from MAdminDashboard.Endpoints.token_handler import get_current_user
+from MAdminDashboard.schemas import NotificationCreate, NotificationItem, NotificationResponse, NotificationUserId
 
 
 
