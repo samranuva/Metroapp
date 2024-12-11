@@ -73,7 +73,7 @@ async def get_all_banners(request:Request, db: Session = Depends(get_db), curren
 
 
 
-@router_banner.get("/banner/{banner_id}", status_code=status.HTTP_200_OK, response_model=BannerItemResponse)
+@router_banner.get("/banner/{banner_id}/", status_code=status.HTTP_200_OK, response_model=BannerItemResponse)
 async def get_banner_by_id(banner_id: int, request: Request, db: Session = Depends(get_db), current_user: str = Depends(get_current_user)):
 
     try:
@@ -89,7 +89,7 @@ async def get_banner_by_id(banner_id: int, request: Request, db: Session = Depen
 
 
 
-@router_banner.put("/updatebanner/{banner_id}", status_code=status.HTTP_200_OK)
+@router_banner.put("/updatebanner/{banner_id}/", status_code=status.HTTP_200_OK)
 async def update_banner(
     banner_id: int,
     request: Request,
@@ -149,7 +149,7 @@ async def update_banner(
         raise HTTPException(status_code=500, detail=f"Internal server error {str(e)}")
 
 
-@router_banner.patch("/bannerdelete/{banner_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router_banner.patch("/bannerdelete/{banner_id}/", status_code=status.HTTP_204_NO_CONTENT)
 def delete_banner(banner_id: int, banner_request: DeleteBannerRequest, db: Session = Depends(get_db), current_user: str = Depends(get_current_user)):
     try:
         banner = db.query(Banner).filter(Banner.id == banner_id).first()

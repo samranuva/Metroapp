@@ -51,7 +51,7 @@ async def read_notifications(db=Depends(get_db), current_user: str = Depends(get
 
 
 
-@router_notification.get("/notification/{notification_id}", response_model=NotificationItem)
+@router_notification.get("/notification/{notification_id}/", response_model=NotificationItem)
 async def get_notification_by_id(notification_id: int, db: Session = Depends(get_db), current_user: str = Depends(get_current_user)):
     try:
         notification = db.query(Notification).filter(Notification.id == notification_id).first()

@@ -26,7 +26,7 @@ def create_department_endpoint(department: DepartmentCreate, db: Session = Depen
         raise HTTPException(status_code=500, detail=f"Internal server error {str(e)}")
 
 
-@router_department.get("/departments/{department_id}", response_model=DepartmentResponse)
+@router_department.get("/departments/{department_id}/", response_model=DepartmentResponse)
 def read_department(department_id: int, db: Session = Depends(get_db)):
     try:
         db_department = db.query(Department).filter(Department.id == department_id).first()
@@ -38,7 +38,7 @@ def read_department(department_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=500, detail=f"Internal server error {str(e)}")
 
 
-@router_department.get("/departments", response_model=List[DepartmentResponse])
+@router_department.get("/departments/", response_model=List[DepartmentResponse])
 def read_departments(db: Session = Depends(get_db)):
     try:
         departments = db.query(Department).all()
@@ -51,7 +51,7 @@ def read_departments(db: Session = Depends(get_db)):
 
 
 
-@router_department.put("/departments/{department_id}", response_model=DepartmentResponse)
+@router_department.put("/departments/{department_id}/", response_model=DepartmentResponse)
 def update_department_endpoint(department_id: int, department: DepartmentUpdate, db: Session = Depends(get_db)):
     try:
         department = db.query(Department).filter(Department.id == department_id).first()
@@ -70,7 +70,7 @@ def update_department_endpoint(department_id: int, department: DepartmentUpdate,
         raise HTTPException(status_code=500, detail=f"Internal server error {str(e)}")
 
 
-@router_department.patch("/departments/{department_id}")
+@router_department.patch("/departments/{department_id}/")
 def delete_department_endpoint(request: DepartmentUserId, department_id: int, db: Session = Depends(get_db)):
     
     try:

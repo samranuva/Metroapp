@@ -44,7 +44,7 @@ async def create_user_with_permissions( user_permissions: UserPermissions, db: S
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
 
-@router_userpermissions.get("/getalluserspermissions", status_code=status.HTTP_200_OK, response_model=UserManagementPermissionsResponse)
+@router_userpermissions.get("/getalluserspermissions/", status_code=status.HTTP_200_OK, response_model=UserManagementPermissionsResponse)
 async def get_all_users_with_permissions(db: Session = Depends(get_db), current_user: str = Depends(get_current_user)):
 
     try:
@@ -63,7 +63,7 @@ async def get_all_users_with_permissions(db: Session = Depends(get_db), current_
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Unexpected error occured {str(e)}")
 
 
-@router_userpermissions.get("/userspermissions/{userid}", status_code=status.HTTP_200_OK, response_model=UserPermissionsItemResponse)
+@router_userpermissions.get("/userspermissions/{userid}/", status_code=status.HTTP_200_OK, response_model=UserPermissionsItemResponse)
 async def get_user(userid: int,db: Session = Depends(get_db), current_user: str = Depends(get_current_user)):
     try:
 
@@ -84,7 +84,7 @@ async def get_user(userid: int,db: Session = Depends(get_db), current_user: str 
         raise HTTPException(status_code=500, detail=f"Internal server error {str(e)}")
 
 
-@router_userpermissions.patch("/updateuserpermission/{userid}")
+@router_userpermissions.patch("/updateuserpermission/{userid}/")
 async def update_user_permissions(userid: int, request: Request, db: Session = Depends(get_db), data: dict = Body(...), current_user: str = Depends(get_current_user)):
 
     try:
@@ -145,7 +145,7 @@ async def update_user_permissions(userid: int, request: Request, db: Session = D
         raise HTTPException(status_code=500, detail=f"Internal server error {str(e)}")
 
 
-@router_userpermissions.patch("/deleteuserpermission/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router_userpermissions.patch("/deleteuserpermission/{user_id}/", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_user(user_id: int, userpermissions_userid: UserPermissionsUserId, db: Session = Depends(get_db),  current_user: str = Depends(get_current_user)):
     try:
         user = db.query(UserManagement).filter(UserManagement.userid == user_id).first()

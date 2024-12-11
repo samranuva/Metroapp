@@ -13,7 +13,7 @@ from MAdminDashboard.schemas import ContentManagementCreate, ContentManagementRe
 router_content = APIRouter()
 
 
-@router_content.post("/content/create")
+@router_content.post("/content/create/")
 async def create_content(content: ContentManagementCreate, db:Session = Depends(get_db),  current_user: str = Depends(get_current_user)):
 
     try:
@@ -44,7 +44,7 @@ async def create_content(content: ContentManagementCreate, db:Session = Depends(
         raise HTTPException(status_code=500, detail=f"Something went wrong {str(e)}")
     
 
-@router_content.get("/contents",  response_model=list[ContentManagementResponse])
+@router_content.get("/contents/",  response_model=list[ContentManagementResponse])
 async def get_all_content(db:Session = Depends(get_db),  current_user: str = Depends(get_current_user)):
     try:
         content_list = db.query(ContentManagement).all()
@@ -58,7 +58,7 @@ async def get_all_content(db:Session = Depends(get_db),  current_user: str = Dep
         raise HTTPException(status_code=500, detail=f"Internal server error {str(e)}")
 
 
-@router_content.put("/contentUpdate/{contentid}", response_model=ContentManagementResponseUpdated)
+@router_content.put("/contentUpdate/{contentid}/", response_model=ContentManagementResponseUpdated)
 def update_content(contentid:int, content_update: ContentManagementUpdate, db:Session = Depends(get_db),  current_user: str = Depends(get_current_user)):
     try:
         
@@ -96,7 +96,7 @@ def update_content(contentid:int, content_update: ContentManagementUpdate, db:Se
         raise HTTPException(status_code=500, detail=f"Internal server error {str(e)}")
 
 
-@router_content.get("/content/{contentid}", response_model=ContentManagementResponse)
+@router_content.get("/content/{contentid}/", response_model=ContentManagementResponse)
 async def get_content_id(contentid:int, db: Session = Depends(get_db),  current_user: str = Depends(get_current_user)):
     try:
         content = db.query(ContentManagement).filter(ContentManagement.id == contentid).first()
@@ -109,7 +109,7 @@ async def get_content_id(contentid:int, db: Session = Depends(get_db),  current_
         raise HTTPException(status_code=500, detail=f"Internal server error {str(e)}")
 
 
-@router_content.patch("/contentRemove/{contentid}")
+@router_content.patch("/contentRemove/{contentid}/")
 async def remove_content(contentid: int, db: Session = Depends(get_db), current_user: str = Depends(get_current_user)):
     try:
         content = db.query(ContentManagement).filter(ContentManagement.id == contentid).first()

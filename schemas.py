@@ -193,3 +193,12 @@ class UserFeedbackResponse(BaseModel):
 
 class UserFeedbackItemResponse(UserFeedbackResponse):
    pass
+
+
+class UserValidate(BaseModel):
+   Mobile_No: str
+   Password: str
+   
+
+class SaveUpdatedPassword(BaseModel):
+   UpdatePassword: str

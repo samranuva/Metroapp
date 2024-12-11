@@ -12,7 +12,7 @@ from MAdminDashboard.Endpoints.token_handler import pwd_context
 router_login = APIRouter()
 
 
-@router_login.post("/login")
+@router_login.post("/login/")
 async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     try:
         user = db.query(UserManagement).filter(UserManagement.emailid == form_data.username).first()
